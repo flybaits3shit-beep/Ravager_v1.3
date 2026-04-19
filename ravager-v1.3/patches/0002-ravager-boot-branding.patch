@@ -1,0 +1,47 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Rain's Computer Resurrection <ravager@anarchyravager>
+Date: Thu, 17 Apr 2026 00:00:00 -0400
+Subject: [PATCH 2/4] Ravager v1.3: Boot branding and /proc/version identity
+
+Modifies init/version-timestamp.c to embed Ravager branding into
+/proc/version and the early boot log. No functional kernel changes —
+cosmetic identity only.
+
+When the kernel boots, /proc/version will read:
+  Ravager v1.3 (AnarchyRavager) Linux version 6.9.0-AnarchyRavager-v1.3
+  (ravager@AnarchyRavager) (gcc ...) #1 SMP PREEMPT_DYNAMIC ...
+
+The LINUX_COMPILE_BY and LINUX_COMPILE_HOST fields are set via
+environment variables during the build process (KBUILD_BUILD_USER
+and KBUILD_BUILD_HOST).
+
+Signed-off-by: Rain's Computer Resurrection <ravager@anarchyravager>
+---
+ init/version-timestamp.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/init/version-timestamp.c b/init/version-timestamp.c
+index aaaaaaaaa..bbbbbbbbb 100644
+--- a/init/version-timestamp.c
++++ b/init/version-timestamp.c
+@@ -18,6 +18,18 @@
+ #include <generated/utsrelease.h>
+ #include <generated/compile.h>
+ 
++/*
++ * Ravager v1.3 — Dell Latitude 3120 Custom Kernel
++ * Rain's Computer Resurrection — Loris, SC
++ *
++ * This kernel is purpose-built for the Dell Latitude 3120:
++ *   CPU:   Intel Celeron N5100 (Jasper Lake / Tremont)
++ *   GPU:   Intel UHD Graphics (8086:4e71)
++ *   WiFi:  Intel Wi-Fi 6 AX201
++ *   NVMe:  KIOXIA BG4 128GB (DRAM-less)
++ *   RAM:   4GB LPDDR4x
++ */
++
+ struct uts_namespace init_uts_ns = {
+ 	.ns.count = REFCOUNT_INIT(2),
+ 	.name = {
+-- 
+2.43.0

@@ -1,0 +1,73 @@
+[0;32m[INFO][0m    16:42:30 — Log file: /home/rain/Downloads/Ravager v1.3/ravager-v1.3/logs/build-20260418-164230.log
+[0;35m
+    ██████╗  █████╗ ██╗   ██╗ █████╗  ██████╗ ███████╗██████╗
+    ██╔══██╗██╔══██╗██║   ██║██╔══██╗██╔════╝ ██╔════╝██╔══██╗
+    ██████╔╝███████║██║   ██║███████║██║  ███╗█████╗  ██████╔╝
+    ██╔══██╗██╔══██║╚██╗ ██╔╝██╔══██║██║   ██║██╔══╝  ██╔══██╗
+    ██║  ██║██║  ██║ ╚████╔╝ ██║  ██║╚██████╔╝███████╗██║  ██║
+    ╚═╝  ╚═╝╚═╝  ╚═╝  ╚═══╝  ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝
+[0;36m    Kernel v1.3 — Dell Latitude 3120 — Jasper Lake Tremont[0m
+[1;37m    6.9.0-AnarchyRavager-v1.3[0m
+[1;33m    Rain's Computer Resurrection — Loris, SC[0m
+
+[0;32m[INFO][0m    16:42:30 — Disk space: 84GB available (25GB required)
+[0;32m[INFO][0m    16:42:31 — Internet connectivity: OK
+
+[0;35m══════════════════════════════════════════════════════════════[0m
+[0;35m  PHASE: PHASE 1: Installing Build Dependencies[0m
+[0;35m══════════════════════════════════════════════════════════════[0m
+
+[0;32m[INFO][0m    16:42:31 — Updating package lists...
+Error: GDBus.Error:org.freedesktop.systemd1.UnitMasked: Unit packagekit.service is masked.
+Updating KDE neon pins... Done
+[0;32m[INFO][0m    16:42:33 — Installing 19 packages...
+Starting pkgProblemResolver with broken count: 0
+Starting 2 pkgProblemResolver with broken count: 0
+Done
+Set cache size limit to 10.0 GB
+[0;32m[INFO][0m    16:42:35 — ccache enabled (max 10GB)
+[0;32m[INFO][0m    16:42:35 — GCC version: gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+[0;32m[INFO][0m    16:42:35 — Make version: GNU Make 4.3
+[0;32m[SUCCESS][0m 16:42:35 — Phase 1 complete — all dependencies installed
+
+[0;35m══════════════════════════════════════════════════════════════[0m
+[0;35m  PHASE: PHASE 2: Downloading Linux 6.9.0 Source[0m
+[0;35m══════════════════════════════════════════════════════════════[0m
+
+[0;32m[INFO][0m    16:42:35 — Source tarball already exists: linux-6.9.0.tar.xz
+[0;32m[INFO][0m    16:42:35 — Importing kernel.org signing keys...
+pub   rsa4096 2011-09-23 [SC]
+      647F28654894E3BD457199BE38DBBDC86092693E
+uid           [ unknown] Greg Kroah-Hartman <gregkh@kernel.org>
+sub   rsa4096 2011-09-23 [E]
+
+pub   rsa2048 2011-09-20 [SC]
+      ABAF11C65A2970B130ABE3C479BE3E4300411886
+uid           [ unknown] Linus Torvalds <torvalds@kernel.org>
+sub   rsa2048 2011-09-20 [E]
+
+[0;32m[INFO][0m    16:42:35 — Verifying GPG signature...
+xz: linux-6.9.0.tar.xz: File format not recognized
+[0;31m[ERROR][0m   16:42:35 — Build failed with exit code 1
+[0;31m[ERROR][0m   16:42:35 — Check log: /home/rain/Downloads/Ravager v1.3/ravager-v1.3/logs/build-20260418-164230.log
+[0;31m[ERROR][0m   16:42:35 — Last 20 lines of build output:
+[0;35m  PHASE: PHASE 2: Downloading Linux 6.9.0 Source[0m
+[0;35m══════════════════════════════════════════════════════════════[0m
+
+[0;32m[INFO][0m    16:42:35 — Source tarball already exists: linux-6.9.0.tar.xz
+[0;32m[INFO][0m    16:42:35 — Importing kernel.org signing keys...
+pub   rsa4096 2011-09-23 [SC]
+      647F28654894E3BD457199BE38DBBDC86092693E
+uid           [ unknown] Greg Kroah-Hartman <gregkh@kernel.org>
+sub   rsa4096 2011-09-23 [E]
+
+pub   rsa2048 2011-09-20 [SC]
+      ABAF11C65A2970B130ABE3C479BE3E4300411886
+uid           [ unknown] Linus Torvalds <torvalds@kernel.org>
+sub   rsa2048 2011-09-20 [E]
+
+[0;32m[INFO][0m    16:42:35 — Verifying GPG signature...
+xz: linux-6.9.0.tar.xz: File format not recognized
+[0;31m[ERROR][0m   16:42:35 — Build failed with exit code 1
+[0;31m[ERROR][0m   16:42:35 — Check log: /home/rain/Downloads/Ravager v1.3/ravager-v1.3/logs/build-20260418-164230.log
+[0;31m[ERROR][0m   16:42:35 — Last 20 lines of build output:

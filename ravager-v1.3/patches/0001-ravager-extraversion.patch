@@ -1,0 +1,34 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Rain's Computer Resurrection <ravager@anarchyravager>
+Date: Thu, 17 Apr 2026 00:00:00 -0400
+Subject: [PATCH 1/4] Ravager v1.3: EXTRAVERSION branding
+
+Sets EXTRAVERSION to -AnarchyRavager-v1.3 in the top-level Makefile.
+This propagates the Ravager identity to:
+  - uname -r
+  - /proc/version
+  - /lib/modules/ path
+  - GRUB menu entry
+  - initramfs filename
+  - vmlinuz filename
+
+Signed-off-by: Rain's Computer Resurrection <ravager@anarchyravager>
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index aaaaaaaaa..bbbbbbbbb 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,7 @@
+ # SPDX-License-Identifier: GPL-2.0
+ VERSION = 6
+ PATCHLEVEL = 9
+ SUBLEVEL = 0
+-EXTRAVERSION =
++EXTRAVERSION = -AnarchyRavager-v1.3
+ NAME = Hurry Up and Finish Already
+ 
+-- 
+2.43.0

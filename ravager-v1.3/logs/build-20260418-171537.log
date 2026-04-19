@@ -1,0 +1,129 @@
+[0;32m[INFO][0m    17:15:37 — Log file: /home/rain/Downloads/Ravager_v1.3/ravager-v1.3/logs/build-20260418-171537.log
+[0;35m
+    ██████╗  █████╗ ██╗   ██╗ █████╗  ██████╗ ███████╗██████╗
+    ██╔══██╗██╔══██╗██║   ██║██╔══██╗██╔════╝ ██╔════╝██╔══██╗
+    ██████╔╝███████║██║   ██║███████║██║  ███╗█████╗  ██████╔╝
+    ██╔══██╗██╔══██║╚██╗ ██╔╝██╔══██║██║   ██║██╔══╝  ██╔══██╗
+    ██║  ██║██║  ██║ ╚████╔╝ ██║  ██║╚██████╔╝███████╗██║  ██║
+    ╚═╝  ╚═╝╚═╝  ╚═╝  ╚═══╝  ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝
+[0;36m    Kernel v1.3 — Dell Latitude 3120 — Jasper Lake Tremont[0m
+[1;37m    6.9.0-AnarchyRavager-v1.3[0m
+[1;33m    Rain's Computer Resurrection — Loris, SC[0m
+
+[0;32m[INFO][0m    17:15:37 — Disk space: 83GB available (25GB required)
+[0;32m[INFO][0m    17:15:37 — Internet connectivity: OK
+
+[0;35m══════════════════════════════════════════════════════════════[0m
+[0;35m  PHASE: PHASE 1: Installing Build Dependencies[0m
+[0;35m══════════════════════════════════════════════════════════════[0m
+
+[0;32m[INFO][0m    17:15:37 — Updating package lists...
+Error: GDBus.Error:org.freedesktop.systemd1.UnitMasked: Unit packagekit.service is masked.
+Updating KDE neon pins... Done
+[0;32m[INFO][0m    17:15:39 — Installing 19 packages...
+Starting pkgProblemResolver with broken count: 0
+Starting 2 pkgProblemResolver with broken count: 0
+Done
+Set cache size limit to 10.0 GB
+[0;32m[INFO][0m    17:15:41 — ccache enabled (max 10GB)
+[0;32m[INFO][0m    17:15:41 — GCC version: gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+[0;32m[INFO][0m    17:15:41 — Make version: GNU Make 4.3
+[0;32m[SUCCESS][0m 17:15:41 — Phase 1 complete — all dependencies installed
+
+[0;35m══════════════════════════════════════════════════════════════[0m
+[0;35m  PHASE: PHASE 2: Preparing Linux 6.9.0 Source[0m
+[0;35m══════════════════════════════════════════════════════════════[0m
+
+[0;32m[INFO][0m    17:15:41 — Source directory found: /home/rain/Downloads/Ravager_v1.3/ravager-v1.3/build/linux-6.9.0
+[0;32m[SUCCESS][0m 17:15:41 — Phase 2 complete — Ready for Jasper Lake patches
+
+[0;35m══════════════════════════════════════════════════════════════[0m
+[0;35m  PHASE: PHASE 3: Applying Ravager Patches[0m
+[0;35m══════════════════════════════════════════════════════════════[0m
+
+[0;32m[INFO][0m    17:15:41 — Setting EXTRAVERSION = -AnarchyRavager-v1.3 (sed failsafe)...
+[0;32m[SUCCESS][0m 17:15:41 — EXTRAVERSION verified in Makefile
+[0;32m[INFO][0m    17:15:41 — Applying patch: 0001-ravager-extraversion.patch...
+[1;33m[WARN][0m    17:15:41 — Patch already applied or conflicts: 0001-ravager-extraversion.patch — skipping
+[0;32m[INFO][0m    17:15:41 — Applying patch: 0002-ravager-boot-branding.patch...
+patching file init/version-timestamp.c
+Hunk #1 succeeded at 19 with fuzz 2 (offset 1 line).
+[0;32m[SUCCESS][0m 17:15:41 — Applied: 0002-ravager-boot-branding.patch
+[0;32m[INFO][0m    17:15:41 — Applying patch: 0003-jasper-lake-i915-psr-fbc.patch...
+[1;33m[WARN][0m    17:15:41 — Patch already applied or conflicts: 0003-jasper-lake-i915-psr-fbc.patch — skipping
+[0;32m[INFO][0m    17:15:41 — Applying patch: 0004-bfq-udev-nvme-rules.patch...
+[1;33m[WARN][0m    17:15:41 — Patch already applied or conflicts: 0004-bfq-udev-nvme-rules.patch — skipping
+[0;32m[INFO][0m    17:15:41 — Applied 1 patches
+[0;32m[INFO][0m    17:15:41 — Kernel version after patching: 6.9.0-AnarchyRavager-v1.3-AnarchyRavager-v1.3
+[0;32m[SUCCESS][0m 17:15:41 — Phase 3 complete — all patches applied
+
+[0;35m══════════════════════════════════════════════════════════════[0m
+[0;35m  PHASE: PHASE 4: Loading Ravager Defconfig[0m
+[0;35m══════════════════════════════════════════════════════════════[0m
+
+[0;32m[INFO][0m    17:15:41 — Copied ravager_v1.3_defconfig to arch/x86/configs/
+[0;32m[INFO][0m    17:15:41 — Loading defconfig...
+  HOSTCC  scripts/basic/fixdep
+  HOSTCC  scripts/kconfig/conf.o
+  HOSTCC  scripts/kconfig/confdata.o
+  HOSTCC  scripts/kconfig/expr.o
+  LEX     scripts/kconfig/lexer.lex.c
+  YACC    scripts/kconfig/parser.tab.[ch]
+  HOSTCC  scripts/kconfig/lexer.lex.o
+  HOSTCC  scripts/kconfig/menu.o
+  HOSTCC  scripts/kconfig/parser.tab.o
+  HOSTCC  scripts/kconfig/preprocess.o
+  HOSTCC  scripts/kconfig/symbol.o
+  HOSTCC  scripts/kconfig/util.o
+  HOSTLD  scripts/kconfig/conf
+arch/x86/configs/ravager_v1.3_defconfig:596:warning: override: reassigning to symbol MEDIA_SUPPORT
+#
+# configuration written to .config
+#
+[0;32m[INFO][0m    17:15:47 — Validating critical Ravager config options...
+[0;32m[INFO][0m    17:15:47 —   ✓ CONFIG_LOCALVERSION="-AnarchyRavager-v1.3"
+[0;32m[INFO][0m    17:15:47 —   ✓ CONFIG_MATOM=y
+[0;32m[INFO][0m    17:15:47 —   ✓ CONFIG_PREEMPT=y
+[0;32m[INFO][0m    17:15:47 —   ✓ CONFIG_HZ_1000=y
+[1;33m[WARN][0m    17:15:47 —   ✗ CONFIG_DRM_I915=y — NOT FOUND (may need menuconfig)
+[0;32m[INFO][0m    17:15:47 —   ✓ CONFIG_IOSCHED_BFQ=y
+[1;33m[WARN][0m    17:15:47 —   ✗ CONFIG_DEFAULT_BFQ=y — NOT FOUND (may need menuconfig)
+[0;32m[INFO][0m    17:15:47 —   ✓ CONFIG_KERNEL_LZ4=y
+[0;32m[INFO][0m    17:15:47 —   ✓ CONFIG_ZSWAP=y
+[1;33m[WARN][0m    17:15:47 —   ✗ CONFIG_ZRAM=m — NOT FOUND (may need menuconfig)
+[1;33m[WARN][0m    17:15:47 —   ✗ CONFIG_IWLWIFI=m — NOT FOUND (may need menuconfig)
+[1;33m[WARN][0m    17:15:47 —   ✗ CONFIG_IWLMVM=m — NOT FOUND (may need menuconfig)
+[1;33m[WARN][0m    17:15:47 —   ✗ CONFIG_SND_HDA_INTEL=y — NOT FOUND (may need menuconfig)
+[0;32m[INFO][0m    17:15:47 —   ✓ CONFIG_SECURITY_APPARMOR=y
+[1;33m[WARN][0m    17:15:47 — 6 config options not found — consider running menuconfig
+[0;32m[SUCCESS][0m 17:15:47 — Phase 4 complete — kernel configured
+
+[0;35m══════════════════════════════════════════════════════════════[0m
+[0;35m  PHASE: PHASE 5: Building Ravager Kernel[0m
+[0;35m══════════════════════════════════════════════════════════════[0m
+
+[0;32m[INFO][0m    17:15:47 — ccache: enabled
+./scripts/build-ravager.sh: line 366: KBUILD_BUILD_USER: readonly variable
+[0;31m[ERROR][0m   17:15:47 — Build failed with exit code 1
+[0;31m[ERROR][0m   17:15:47 — Check log: /home/rain/Downloads/Ravager_v1.3/ravager-v1.3/logs/build-20260418-171537.log
+[0;31m[ERROR][0m   17:15:47 — Last 20 lines of build output:
+[1;33m[WARN][0m    17:15:47 —   ✗ CONFIG_DEFAULT_BFQ=y — NOT FOUND (may need menuconfig)
+[0;32m[INFO][0m    17:15:47 —   ✓ CONFIG_KERNEL_LZ4=y
+[0;32m[INFO][0m    17:15:47 —   ✓ CONFIG_ZSWAP=y
+[1;33m[WARN][0m    17:15:47 —   ✗ CONFIG_ZRAM=m — NOT FOUND (may need menuconfig)
+[1;33m[WARN][0m    17:15:47 —   ✗ CONFIG_IWLWIFI=m — NOT FOUND (may need menuconfig)
+[1;33m[WARN][0m    17:15:47 —   ✗ CONFIG_IWLMVM=m — NOT FOUND (may need menuconfig)
+[1;33m[WARN][0m    17:15:47 —   ✗ CONFIG_SND_HDA_INTEL=y — NOT FOUND (may need menuconfig)
+[0;32m[INFO][0m    17:15:47 —   ✓ CONFIG_SECURITY_APPARMOR=y
+[1;33m[WARN][0m    17:15:47 — 6 config options not found — consider running menuconfig
+[0;32m[SUCCESS][0m 17:15:47 — Phase 4 complete — kernel configured
+
+[0;35m══════════════════════════════════════════════════════════════[0m
+[0;35m  PHASE: PHASE 5: Building Ravager Kernel[0m
+[0;35m══════════════════════════════════════════════════════════════[0m
+
+[0;32m[INFO][0m    17:15:47 — ccache: enabled
+./scripts/build-ravager.sh: line 366: KBUILD_BUILD_USER: readonly variable
+[0;31m[ERROR][0m   17:15:47 — Build failed with exit code 1
+[0;31m[ERROR][0m   17:15:47 — Check log: /home/rain/Downloads/Ravager_v1.3/ravager-v1.3/logs/build-20260418-171537.log
+[0;31m[ERROR][0m   17:15:47 — Last 20 lines of build output:

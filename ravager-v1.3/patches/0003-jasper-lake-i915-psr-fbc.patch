@@ -1,0 +1,65 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Rain's Computer Resurrection <ravager@anarchyravager>
+Date: Thu, 17 Apr 2026 00:00:00 -0400
+Subject: [PATCH 3/4] Ravager v1.3: Jasper Lake i915 PSR2/FBC documentation
+
+Adds inline documentation to the i915 driver source describing the
+recommended PSR2, FBC, and GuC settings for Jasper Lake UHD Graphics
+(PCI ID 8086:4e71) on the Dell Latitude 3120.
+
+No functional code changes. Documentation-only patch for maintainability.
+
+These settings are applied at boot via GRUB parameters:
+  i915.enable_psr=2
+  i915.enable_fbc=1
+  i915.enable_guc=2
+
+Signed-off-by: Rain's Computer Resurrection <ravager@anarchyravager>
+---
+ drivers/gpu/drm/i915/i915_params.c | 30 ++++++++++++++++++++++++++++++
+ 1 file changed, 30 insertions(+)
+
+diff --git a/drivers/gpu/drm/i915/i915_params.c b/drivers/gpu/drm/i915/i915_params.c
+index aaaaaaaaa..bbbbbbbbb 100644
+--- a/drivers/gpu/drm/i915/i915_params.c
++++ b/drivers/gpu/drm/i915/i915_params.c
+@@ -1,5 +1,35 @@
+ // SPDX-License-Identifier: MIT
+ /*
++ * ==========================================================================
++ * Ravager v1.3 — Jasper Lake (Dell Latitude 3120) GPU Configuration Notes
++ * ==========================================================================
++ *
++ * Target GPU: Intel Jasper Lake UHD Graphics
++ *   PCI ID:   8086:4e71
++ *   Gen:      Gen 11 (Ice Lake LP derivative)
++ *   Driver:   i915 (built-in, CONFIG_DRM_I915=y)
++ *
++ * Recommended boot parameters for this specific GPU:
++ *
++ *   i915.enable_psr=2
++ *     Panel Self Refresh level 2 (PSR2/selective update).
++ *     Jasper Lake supports PSR2 natively. Reduces display power by
++ *     only refreshing changed regions of the framebuffer.
++ *     Critical for battery life on the Latitude 3120 (42Wh battery).
++ *
++ *   i915.enable_fbc=1
++ *     Framebuffer Compression. Reduces memory bandwidth usage by
++ *     compressing the framebuffer in VRAM. Particularly effective
++ *     on LPDDR4x shared memory architectures where GPU and CPU
++ *     compete for the same memory bus.
++ *
++ *   i915.enable_guc=2
++ *     GuC submission mode. Offloads GPU workqueue scheduling to the
++ *     GuC microcontroller. Reduces CPU overhead for GPU scheduling,
++ *     freeing Tremont cores for Plasma compositor work.
++ *
++ * force_probe is NOT required — 8086:4e71 has been in i915_pci.c
++ * since kernel 5.6. Native probe, no taint.
++ * ==========================================================================
++ *
+  * Copyright © 2014 Intel Corporation
+  *
+  * Permission is hereby granted, free of charge, to any person obtaining a
+-- 
+2.43.0

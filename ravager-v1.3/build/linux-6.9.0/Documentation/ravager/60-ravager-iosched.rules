@@ -1,0 +1,55 @@
+# ============================================================================
+# Ravager v1.3 — I/O Scheduler udev Rules
+# Dell Latitude 3120 — KIOXIA BG4 128GB NVMe (DRAM-less HMB)
+# ============================================================================
+#
+# Install to: /etc/udev/rules.d/60-ravager-iosched.rules
+# Reload:     sudo udevadm control --reload-rules && sudo udevadm trigger
+#
+# RATIONALE:
+#   The KIOXIA BG4 (KBG40ZNS128G) is a DRAM-less NVMe drive that uses
+#   Host Memory Buffer (HMB) for its FTL mapping tables. Without onboard
+#   DRAM, the drive cannot efficiently reorder or merge I/O internally.
+#   BFQ provides host-side scheduling intelligence that compensates.
+#
+#   Kyber (default for mq devices in many configs) is inappropriate here
+#   because it assumes device-side intelligence that the BG4 lacks.
+#
+# ============================================================================
+
+# --- NVMe devices: BFQ with optimized queue depth ---
+# Match any NVMe block device (nvme0n1, nvme1n1, etc.)
+ACTION=="add|change", KERNEL=="nvme[0-9]*n[0-9]*", ATTR{queue/scheduler}="bfq"
+
+# Reduce queue depth from default 1024 to 64
+# The BG4's HMB can't efficiently handle deep queues — 64 is the sweet spot
+# between throughput and latency for DRAM-less NVMe
+ACTION=="add|change", KERNEL=="nvme[0-9]*n[0-9]*", ATTR{queue/nr_requests}="64"
+
+# Read-ahead: 128KB (reduced from default 256KB)
+# Optimized for 4K random read/write patterns (desktop workload)
+# Higher read-ahead wastes HMB bandwidth on speculative reads
+ACTION=="add|change", KERNEL=="nvme[0-9]*n[0-9]*", ATTR{queue/read_ahead_kb}="128"
+
+# Enable BFQ low_latency mode for interactive desktop responsiveness
+ACTION=="add|change", KERNEL=="nvme[0-9]*n[0-9]*", ATTR{queue/iosched/low_latency}="1"
+
+# Disable I/O stats to reduce per-I/O overhead on a low-power CPU
+ACTION=="add|change", KERNEL=="nvme[0-9]*n[0-9]*", ATTR{queue/iostats}="0"
+
+# Enable write-back throttling for NVMe
+ACTION=="add|change", KERNEL=="nvme[0-9]*n[0-9]*", ATTR{queue/wbt_lat_usec}="2000"
+
+# --- USB mass storage: BFQ with conservative settings ---
+# Match USB storage devices (thumb drives, external HDDs)
+ACTION=="add|change", KERNEL=="sd[a-z]", ATTRS{removable}=="1", ATTR{queue/scheduler}="bfq"
+ACTION=="add|change", KERNEL=="sd[a-z]", ATTRS{removable}=="1", ATTR{queue/nr_requests}="32"
+ACTION=="add|change", KERNEL=="sd[a-z]", ATTRS{removable}=="1", ATTR{queue/read_ahead_kb}="64"
+ACTION=="add|change", KERNEL=="sd[a-z]", ATTRS{removable}=="1", ATTR{queue/iosched/low_latency}="1"
+
+# --- SATA/SCSI (if any external dock is used) ---
+ACTION=="add|change", KERNEL=="sd[a-z]", ATTRS{removable}=="0", ATTR{queue/scheduler}="bfq"
+ACTION=="add|change", KERNEL=="sd[a-z]", ATTRS{removable}=="0", ATTR{queue/nr_requests}="128"
+ACTION=="add|change", KERNEL=="sd[a-z]", ATTRS{removable}=="0", ATTR{queue/read_ahead_kb}="256"
+
+# ============================================================================
