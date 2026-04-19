@@ -1,9 +1,15 @@
 # Ravager v1.3
 
-Performance-optimized system build for Dell Latitude 3120.
+Build: Stock Linux 6.9.0 (Patched)
+Target: Dell Latitude 3120
 
-## Specs
-- Kernel: Stock Linux 6.9.0 (Optimized)
+## Applied Patches & Diffs
+- 0001: Ravager extraversion/branding
+- 0002: Custom boot splash branding
+- 0003: Jasper Lake i915 PSR/FBC (Fixes flickering)
+- 0004: BFQ udev rules for NVMe (Snappy I/O)
+
+## System Stats
 - OS: Neon Anarchy (Plasma 6)
-- Memory: zRAM + zstd
-- Storage: NVMe Optimized
+- Swap: zRAM with zstd
+- Storage: NVMe SSD Optimized
